@@ -54,46 +54,11 @@ $ yarn start
 ---
 
 
-#### Extensions:
-
-* REACT & Babel
-
----
-
-
-#### Design Decisions
-
-* We seperate out server code to routers, controllers, models.. .etc., which modular our project, make it has more Scalability, easy to maintain.
-* Using ejs to replace html, which save us a lot of time to messing around the data.
-* Using yarn to replace npm, which is faster(in this case).
-
----
-
-
-#### Improvement of the system
-
-* First I would say is the design of front-end(layout), since the layout was pretty much manually made with absolute position instead of fixed onto the page. and we should use smarter way to add element onto page.
-* Second is the user account, we could add more logical and detailed restriction while user signing up.
-* Thirdly is the searching algorithm, it has a large room to improve, liek fuzzy search, and using ajax to display a prediction when you input something in the searchbox.
-* And we may retrieve more data online, not only use the provided data.
-
----
-
-
-#### Prefered feature(s)
-
-Well, we don't think here is anything specific that we should like most, becuase we like the entire project which is a finlly crafted artware of us. Such as the layout design, we should make it scalable, useful and pretty(like the fonts and the animations). As for the algorithms, such as recommanding movies to users, or returning searching results, all of these should be intelligent efficient and stable.
-
-We carefully follow the project instuction provided, and make efforts on designing algorisms as well as beautifing web pages. All of our progress that working on this project is all about attempting to make the best of it as we wish and planned at beginning. Also, we balieve that a feature that can be called as a  "best feature" should achieve some great innovations which has a technical level above what we had learnt from our course, it much more like a exploration of us in the unknown field. However, what we focus on this project is using the knowldege that we had learnt so far to make the best and closest one to the ideal project of us, becuase we believe that a stable program is better than a fancy program.
 
 
 
----
 
 
-#### Author
 
-Student1: Yuchen, Liu  101032193 COMP2406B
 
-Student2: Zhiyuan, Lu  101111233 COMP2406A
 
