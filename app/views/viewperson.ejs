@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>userprofile</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/static/css/font.css"></link>
+
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        font-family: 'Montserrat';
+        background: url("/static/img/userprofileback.png") no-repeat;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .header {
+        border-bottom: 2px #ffffff solid;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 100px 0;
+        position: relative;
+    }
+    
+    .header-user {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .header-user-info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+    
+    .header-user img {
+        width: 120px;
+        height: 120px;
+        border-radius: 5px;
+        border: 2px solid #f0f1f5;
+        padding: 3px;
+    }
+    
+    .header-user-btn {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    .header-user-btn span {
+        padding: 6px 20px;
+        background: #0f82ff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .header-user-btn span:active {
+        opacity: 0.8;
+    }
+    
+    .header-avtar {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        cursor: pointer;
+    }
+    
+    .header-avtar input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    .header-user span {
+        font-weight: bolder;
+        font-size: 18px;
+        color: #ffffff;
+        margin-left: 10px;
+    }
+    
+    .header-box {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 2px #ffffff solid;
+    }
+    
+    .footer-top-item {
+        margin-right: 15px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    
+    .footer-top-item-active {
+        color: #37a !important;
+    }
+    
+    .footer-bottom-item {
+        display: none;
+        transition: all 300ms;
+    }
+    
+    .show {
+        display: block;
+    }
+    
+    .tag {
+        border: 1px solid #409eff;
+        line-height: 1;
+        margin-left: 20px;
+        border-radius: 3px;
+    }
+    
+    .tag span {
+        color: greenyellow!important;
+    }
+    
+    .footer-bottom-item {
+        padding: 20px 0;
+    }
+    
+    .movie {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .movie-item {
+        width: 200px;
+        height: 360px;
+        transition: all 0.3s;
+        overflow: hidden;
+    }
+    
+    .movie img {
+        width: 200px;
+        height: 300px;
+        border-radius: 6px;
+    }
+    
+    .movie-item:hover {
+        transform: scale(1.06);
+    }
+    
+    .movie-item div {
+        text-align: center;
+        color: #fff;
+        margin-top: 10px;
+    }
+    
+    .user {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .user-item {
+        border: 1px dashed #fff;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    
+    .user-item img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-user">
+                <div class="header-user-info">
+                    <div class="header-avtar">
+                        <% if (info.avatar) { %>
+                            <img src="<%= info.avatar %>" id="avatarImg" />
+                            <% } %>
+                                <% if (!info.avatar) { %>
+                                    <img src="/static/img/usericon.png" id="avatarImg" />
+                                    <% } %>
+                    </div>
+                    <span>USERNAME： <%= info.username %></span>
+                    <div class="tag">
+                        <input type="hidden" value="<%= user._id %>" id="current" />
+                        <input type="hidden" value="<%= info._id %>" id="person" />
+                        <input type="hidden" value="<%= info.username %>" id="personName" />
+                        <input type="hidden" value="<%= info.avatar %>" id="personAvatar" />
+                        <% if (info.account_type==='0') { %>
+                            <span>ADMIN</span>
+                            <% } %>
+                                <% if (info.account_type==='1') { %>
+                                    <span>REGULAR</span>
+                                    <% } %>
+                                        <% if (info.account_type==='2') { %>
+                                            <span>CONTRIBUTOR</span>
+                                            <% } %>
+                    </div>
+                </div>
+                <div class="header-user-btn">
+                    <% if (isFollow) { %>
+                        <span class="btn" onclick="handleFollow(1)">UNFOLLOW</span>
+                        <% } %>
+                            <% if (!isFollow) { %>
+                                <span class="btn" onclick="handleFollow(2)">FOLLOW</span>
+                                <% } %>
+                </div>
+            </div>
+            <div class="header-box">
+                <%- include('./modules/header.ejs'); %>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-top">
+                <div class="footer-top-item">SUBSCRIBERS
+                </div>
+                <div class="footer-top-item">
+                    FOLLOWERS
+
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-item show">
+                    <div class="movie">
+                        <% followPerson.forEach(function(item,index){ %>
+                            <div class="person">
+                                <a href="/people?id=<%= item.friend_id %>">
+                                <img src="<%= item.friend_avatar %>" alt = "personImg1">
+                            </a>
+                                <span><%= item.friend_name %></span>
+                            </div>
+                            <% }); %>
+                    </div>
+                </div>
+                <div class="footer-bottom-item">
+                    <div class="movie">
+                        <% byFollowPerson.forEach(function(item,index){ %>
+                            <div class="person">
+                                <a href="/people?id=<%= item.friend_id %>">
+                                <img src="<%= item.friend_avatar %>" alt = "personImg1">
+                            </a>
+                                <span><%= item.friend_name %></span>
+                            </div>
+                            <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/js/jquery.min.js"></script>
+<script>
+    function handleFollow(e) {
+        const current = $("#current").val()
+        const person = $("#person").val()
+        if (!current) {
+            alert("Please log in")
+            return false
+        }
+        $.post("/user/follow", {
+            user_id: current,
+            friend_id: person,
+            type: e,
+            friend_name: $("#personName").val(),
+            friend_avatar: $("#personAvatar").val()
+        }, (e) => {
+            if (e.success) {
+                window.location.reload()
+            } else {
+                alert(e.msg)
+            }
+        });
+    }
+    $(function() {
+        const len = $(".footer-top-item").length;
+        $(".footer-top-item").click(function() {
+            for (let i = 0; i < len; i++) {
+                $(".footer-top-item").eq(i).removeClass('footer-top-item-active')
+                $('.footer-bottom-item').eq(i).removeClass('show')
+            }
+            const index = $(this).index()
+            $(this).addClass('footer-top-item-active')
+            $('.footer-bottom-item').eq(index).addClass('show')
+        })
+    })
+</script>
+
+</html>

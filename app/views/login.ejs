@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+
+<body>
+    <div class="materialContainer">
+        <div class="box">
+            <div class="title">LOGIN</div>
+            <div class="input">
+                <label for="name">Username</label>
+                <input type="text" name="name" id="name">
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="pass">password</label>
+                <input type="password" name="pass" id="pass">
+                <span class="spin"></span>
+            </div>
+            <div class="button login">
+                <button onclick="handleLogin()">
+                    <span>Login</span>
+                    <i class="fa fa-check"></i>
+                </button>
+            </div>
+            <a href="javascript:" class="pass-forgot" onclick="handleForget()">forget password？</a>
+        </div>
+
+        <div class="overbox">
+            <div class="material-button alt-2">
+                <span class="shape"></span>
+            </div>
+            <div class="title">Sign Up</div>
+            <div class="input">
+                <label for="regname">Username</label>
+                <input type="text" name="regname" id="regname">
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="regpass">Password</label>
+                <input type="password" name="regpass" id="regpass">
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="reregpass">Confirm Password</label>
+                <input type="password" name="reregpass" id="reregpass">
+                <span class="spin"></span>
+            </div>
+            <div class="button signup">
+                <button onclick="handleSubmit(1)">
+                    <span>Sign Up</span>
+                </button>
+            </div>
+            <div class="button signup2">
+                <button onclick="handleSubmit(2)">
+                    <span>Sign Up as a contributor</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/loginAnimation.js"></script>
+</body>
+
+</html>

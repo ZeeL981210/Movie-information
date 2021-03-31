@@ -1,0 +1,320 @@
+body{
+    /*修改body背景颜色*/
+    /*background-color: #7DBBDA;*/
+    background-image: url("../img/userprofileback.png");
+    /*background-repeat: no-repeat;*/
+    background-size:1300px 700px;
+}
+
+#topBar{
+    position: absolute;
+    top: 10px;
+    left: 9px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 1250px;
+    height:30px;
+}
+
+#left{
+    position: absolute;
+    top: 50px;
+    left: 9px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 500px;
+    height:625px;
+}
+
+#title{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    /*border: 1px solid black;
+    padding-left: 10px;
+    width: 625px;
+    height:625px;*/
+}
+
+#userLogo{
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    border: 1px solid black;
+    width: 140px;
+    height:140px;
+}
+
+.userLogo-inner{
+    position: relative;
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+}
+
+.userLogo-inner img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.userLogo-inner input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    cursor: pointer;
+    opacity: 0;
+}
+
+#userInfoTxt{
+    position: absolute;
+    top: 60px;
+    left: 189px;
+    padding-left: 10px;
+    width: 300px;
+    height:300px;
+    font-size: 20px;
+}
+
+#links{
+    position: absolute;
+    top: 250px;
+    left: 10px;
+    padding-left: 10px;
+    width: 500px;
+    height:40px;
+}
+
+#moreFuntions{
+    position: absolute;
+    top: 400px;
+    left: 30px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 400px;
+    height:200px;
+}
+
+#right{
+    position: absolute;
+    top: 50px;
+    left: 530px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 530px;
+    height:625px;
+}
+
+#up{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 465px;
+    height:260px;
+}
+
+#history{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 1px solid black;
+    padding-left: 40px;
+    padding-top: 10px;
+    width: 415px;
+    height:230px;
+}
+
+#hisNext{
+    position: absolute;
+    top: 215px;
+    left: 300px;
+}
+
+#hisPrev{
+    position: absolute;
+    top: 215px;
+    left: 95px;
+}
+
+
+#down{
+    position: absolute;
+    top: 330px;
+    left: 30px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 465px;
+    height:260px;
+}
+
+#recommand{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 1px solid black;
+    padding-left: 40px;
+    padding-top: 10px;
+    width: 415px;
+    height:230px;
+}
+
+#recNext{
+    position: absolute;
+    top: 215px;
+    left: 300px;
+}
+
+#recPrev{
+    position: absolute;
+    top: 215px;
+    left: 95px;
+}
+
+#space{
+    position: absolute;
+    top: 50px;
+    left: 1080px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 180px;
+    height:625px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+#space::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+
+
+
+
+
+.imgFrame {
+    border: 1px solid black;
+    margin-left: 25px;
+    margin-top: 10px;
+    height: 140px;
+    width: 70px;
+}
+
+.video-info-holder {
+    border: 1px solid black;
+    height: 200px;
+    width: 120px;
+    float: left;
+}
+
+/*
+#main{
+    position: absolute;
+    top: 10px;
+    left: 9px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 1250px;
+    height:30px;
+}
+
+#right{
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 700px;
+    height:700px;
+}
+
+#up{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid black;
+    padding-top: 20px;
+    padding-left: 20px;
+    width: 500px;
+    height:300px;
+}
+
+#down{
+    position: absolute;
+    top: 320px;
+    right: 10px;
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 500px;
+    height:300px;
+}
+
+.userInfoTxt text {
+    display: inline-flex;
+    padding: 15px;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 16px;
+}
+
+.imgFrame {
+    border: 1px solid black;
+    margin-left: 25px;
+    margin-top: 10px;
+    height: 140px;
+    width: 70px;
+}
+
+.video-info-holder {
+    border: 1px solid black;
+    height: 200px;
+    width: 120px;
+    float: left;
+}
+
+.history {
+    display: inline-block;
+}
+
+.recommand {
+    display: inline-block;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+*/
+
+.video-info-holder img{
+    width: 120px;
+}
+
+.space-item{
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.space-item img{
+    width: 100%;
+}
+.space-item span{
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+}

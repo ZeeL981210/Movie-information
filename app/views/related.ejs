@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>related</title>
+    <style>
+        .related {
+            width: 1200px;
+            border: 1px solid #ddd;
+            margin: 20px auto;
+            padding: 20px 0;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .related-item {
+            width: 25%;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+        
+        img:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="related">
+        <% info.forEach(function(item,index){ %>
+            <div class="related-item">
+                <a href="/movieinfo?id=<%= item ? item['_id']: '' %>">
+          <img src="<%= item ? item.Poster : '' %>" class="imgFrame" />
+        </a>
+                <span><%= item ? item.Title: '' %></span>
+            </div>
+            <% }); %>
+    </div>
+</body>
+<script src="/static/js/backgroundAnimation.js"></script>
+
+</html>

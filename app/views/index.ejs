@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<head>
+    <title>HomePage</title>
+    <link rel="shortcut icon" href="/static/img/movielogo.png" />
+</head>
+
+<link rel="stylesheet" type="text/css" href="/static/css/index.css"></link>
+<link rel="stylesheet" type="text/css" href="/static/css/font.css"></link>
+<link rel="stylesheet" type="text/css" href="/static/css/navBar.css"></link>
+
+<body>
+    <!--Navagation Bar container-->
+    <div class="container">
+        <div class="nav">
+
+            <!--LOGO-->
+            <div>&nbsp;&nbsp;</div>
+            <div class="logo">
+                <a href="/"><img src="/static/img/movielogo.png" heigh="130" width="130"></a>
+            </div>
+
+
+            <div class="link">
+                <div class="text"><a href="/">home</a></div>
+
+            </div>
+            <% if (user) { %>
+                <div class="link access-box">
+                    <div class="text" id="history"><a href="#">history</a></div>
+                    <div class="access">
+                        <div class="access-item">
+                            <div class="access-item-title">
+                            </div>
+                            <div class="access-item-sub">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                    <div class="searchBox">
+                        <input type="text" placeholder="Search..." onkeydown='if(event.keyCode==13) window.open("/search?name="+event.target.value,target="_self");'>
+                    </div>
+                    <div class="link">
+                        <% if (!user) { %>
+                            <div class="text"><a href="/login">login</a></div>
+                            <% } %>
+                                <% if (user) { %>
+                                    <input type="hidden" value="<%= user._id %>" id="userId">
+                                    <div class="text"><a href="/user/logout">logout</a></div>
+                                    <% } %>
+                    </div>
+                    <!--temprary link just for showing the page-->
+                    <% if (user) { %>
+                        <div class="link">
+                            <div class="text"><a href="/userprofile">user</a></div>
+                        </div>
+                        <% } %>
+        </div>
+    </div>
+    <div class="row">
+        <!--Category Bar container-->
+        <div class="side">
+            <div class="nav">
+                <% data.forEach(function(item,index){ %>
+                    <div class="link">
+                        <div class="text">
+                            <a href="#<%= item.type %>">
+                                <%= item.type %>
+                            </a>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+        <div class="main">
+            <% data.forEach(function(item,index){ %>
+                <div id="<%= item.type %>" class="holder">
+                    <h2>
+                        <%= item.type %>
+                    </h2>
+                    <% item['list'].forEach(function(citem){ %>
+                        <div class="inner">
+                            <a href="/movieinfo?id=<%= citem._id %>">
+                                <img src="<%= citem.Poster %>" class="imgFrame">
+                            </a>
+                            <div class="text">
+                                <%= citem.Title %>
+                            </div>
+                        </div>
+                        <% }); %>
+                            <% if (index === 0) { %>
+                                <div class="inner">
+                                    <div class="chart">
+                                        <h2>TOP-5 RATED MOVIES</h2>
+                                        <% rank.forEach(function(zitem,zindex){ %>
+                                            <li>
+                                                <a href="/movieinfo?id=<%= zitem._id %>">
+                                                    <span class="dot"><%= zindex+1 %></span>
+                                                    <span><%= zitem.Title%></span>
+                                                </a>
+                                            </li>
+                                            <% }); %>
+                                    </div>
+                                </div>
+                                <% } %>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+    </div>
+    <div class="bottom">SOME INFORMATION HERE</div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/timeago.full.min.js"></script>
+    <script>
+        $(function() {
+            $('#history').hover(function(event) {
+                $(".access").addClass('access-show')
+                if ($("#userId").val()) {
+                    getFocusOn()
+                }
+                event.stopPropagation();
+                return false;
+            });
+            $('.access').hover(function(event) {
+
+            }, function() {
+                $(".access").removeClass('access-show')
+                $(".access").empty()
+                event.stopPropagation();
+                return false;
+            })
+        })
+
+        function getFocusOn() {
+            $.get("/user/follow", (e => {
+                if (e.success) {
+                    let result = []
+                    e.msg.data.forEach(item => {
+                        let i = `
+                 <a href="/movieinfo?id=${item.movie_id}" >
+                    <div class="access-item">
+                        <div class="access-item-title">
+                            ${item.movie_title}
+                        </div>
+                        <div class="access-item-sub">
+                            ${time(item.createDate)}
+                        </div>
+                    </div>
+                </a>
+                 `
+                        result.push(i)
+                    })
+                    $(".access").html(result)
+                } else {
+                    $(".access").text("NO DATA FOUND")
+                }
+            }))
+        }
+
+        function time(e) {
+            return timeago.format(e, 'en')
+        }
+    </script>
+</body>

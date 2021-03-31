@@ -1,0 +1,52 @@
+{
+    "admin": {
+        "UID": "000000",
+        "username": "admin",
+        "password": "admin",
+        "account_type": "0",
+        "movie_contributed": [],
+        "userIcon": "<filename>",
+        "followers": [],
+        "subscriptions": []
+    },
+    "jack": {
+        "UID": "000001",
+        "username": "jack",
+        "password": "jackluvrose",
+        "account_type": "2",
+        "movie_contributed": [],
+        "userIcon": "<filename>",
+        "followers": ["tracy"],
+        "subscriptions": ["rose"]
+    },
+    "rose": {
+        "UID": "000002",
+        "username": "rose",
+        "password": "roseluvbob",
+        "account_type": "2",
+        "movie_contributed": [],
+        "userIcon": "<filename>",
+        "followers": ["jack"],
+        "subscriptions": ["bob"]
+    },
+    "bob": {
+        "UID": "000003",
+        "username": "bob",
+        "password": "bobluvtracy",
+        "account_type": "1",
+        "movie_contributed": [],
+        "userIcon": "<filename>",
+        "followers": ["rose"],
+        "subscriptions": ["tracy"]
+    },
+    "tracy": {
+        "UID": "000004",
+        "username": "tracy",
+        "password": "tracyluvjack",
+        "account_type": "2",
+        "movie_contributed": [],
+        "userIcon": "<filename>",
+        "followers": ["bob"],
+        "subscriptions": ["jack"]
+    }
+}

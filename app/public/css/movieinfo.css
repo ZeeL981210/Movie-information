@@ -1,0 +1,300 @@
+body {
+    background: #ffffff;
+    font-family: 'Montserrat';
+    margin: 0;
+    min-width: 1685px;
+    overflow: auto;
+}
+
+.infoContainer {
+    margin-top: 13%;
+    border-top: 2px solid white;
+    padding-bottom: 0px;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 950px;
+    width: 1300px;
+}
+
+.infoContainer .imgFrame {
+    flex: 30%;
+    float: left;
+    border: 2px solid rgb(0, 0, 0);
+    margin-left: 130px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 30px;
+    height: 400px;
+    width: 280px;
+}
+
+.infoContainer .info {
+    flex: 70%;
+    float: left;
+    border: 2px solid rgb(0, 0, 0);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 30px;
+    height: auto;
+    width: 830px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.infoContainer .info h2 {
+    font-size: 40px;
+    text-indent: 5%;
+}
+
+.infoContainer .info p {
+    font-size: 24px;
+    text-indent: 5%;
+    display: inline;
+    padding-left: 0px;
+    line-height: 200%;
+}
+
+.infoContainer .info span {
+    font-size: 10px;
+    text-indent: 5%;
+}
+
+.infoContainer .info a {
+    cursor: pointer;
+    font-size: 24px;
+    text-indent: 5%;
+    text-decoration: none;
+}
+
+.infoContainer .info a:visited {
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+
+.infoContainer .info a:hover {
+    color: #d0eb3c;
+    transition: all 450ms ease;
+}
+
+.recommandContainer {
+    margin-top: 200px;
+    margin-bottom: 50px;
+    border-bottom: 2px solid white;
+    margin-left: 12%;
+    margin-right: 5%;
+    height: 450px;
+}
+
+.recommandContainer h1 {
+    font-size: 40px;
+    text-indent: 0%;
+}
+
+.recommandContainer .inner {
+    padding: 0;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+    width: 180px;
+}
+
+.recommandContainer .imgFrame {
+    cursor: pointer;
+    border: 3px solid rgb(0, 0, 0);
+    height: 300px;
+    width: 180px;
+}
+
+.recommandContainer .imgFrame:hover {
+    border: 3px solid rgb(7, 241, 210);
+}
+
+.recommandContainer .text {
+    cursor: pointer;
+}
+
+#makeComments {
+    position: absolute;
+    left: 800px;
+    top: 700px;
+    border: 1px solid rgb(0, 0, 0);
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 27px;
+    width: 555px;
+    height: auto;
+}
+
+#comments {
+    width: 510px;
+    height: 250px;
+    resize: none;
+}
+
+#moreInfo {
+    position: absolute;
+    left: 214px;
+    top: 700px;
+    border: 1px solid rgb(0, 0, 0);
+    padding-left: 20px;
+    width: 555px;
+    height: auto;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+#otherUserComments {
+    position: absolute;
+    left: 214px;
+    margin-top: 20px;
+    border: 1px solid rgb(0, 0, 0);
+    padding-left: 10px;
+    width: 1147px;
+    height: 100px;
+    font-family: Monaco;
+    font-style: oblique;
+    color: rgb(0, 0, 0);
+    margin-bottom: 100px;
+}
+
+.pic {
+    width: 276px;
+    height: 395px;
+}
+
+#currentMovie {
+    color: hotpink;
+}
+
+#curMovieTitle {
+    color: blue;
+}
+
+#curMovieYear {
+    color: blue;
+}
+
+#curMovieRate {
+    color: blue;
+}
+
+#curMovieRuntime {
+    color: blue;
+}
+
+#curMoviePlot {
+    color: blue;
+}
+
+#curMovieGenre {
+    color: blue;
+}
+
+#curMovieDir {
+    color: blue;
+}
+
+#curMovieAct {
+    color: blue;
+}
+
+#curMovieWtr {
+    color: blue;
+}
+
+#imdbR {
+    color: blue;
+}
+
+.imgFrame img {
+    width: 100%;
+    height: 100%;
+}
+
+.rate-active {
+    background-color: yellow;
+}
+
+.review {
+    width: 1300px;
+    margin: 0 auto;
+    color: rgb(0, 0, 0);
+}
+
+.review-item {
+    border-bottom: 1px solid #f0f1f5;
+    padding: 15px 0 20px 0;
+}
+
+.main-hd {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.access-box {
+    position: relative;
+}
+
+.access {
+    position: absolute;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    width: 300px;
+    transition: height .3s;
+    overflow: hidden;
+    height: 0;
+}
+
+.access-show {
+    height: 290px;
+}
+
+.access-item {
+    padding: 15px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.access-item:hover {
+    background-color: #000000;
+}
+
+.access-item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #212121;
+    font-size: 16px;
+}
+
+.access-item-sub {
+    color: #898989;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.commentArea {
+    font-family: 'Montserrat';
+    font-size: 18px;
+}
+
+.rates {
+    font-family: 'Montserrat';
+    font-size: 20px;
+    border-radius: 22px;
+    margin-bottom: 5%;
+    border: none;
+}
+
+.toggle-btn {
+    margin-top: 10px;
+    border-top: 1px solid rgb(160, 160, 160);
+    text-align: right;
+}

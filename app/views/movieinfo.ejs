@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Movie information</title>
+    <link rel="stylesheet" href="/static/css/font.css" />
+    <link rel="stylesheet" href="/static/css/navbar.css" />
+    <link rel="stylesheet" href="/static/css/movieinfo.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <!--LOGO-->
+            <div>&nbsp;&nbsp;</div>
+            <div class="logo">
+                <a href="/"><img src="/static/img/movielogo.png" heigh="130" width="130" /></a>
+            </div>
+
+            <div class="link">
+                <div class="text"><a href="/">home</a></div>
+            </div>
+            <% if (user) { %>
+                <div class="link access-box">
+                    <div class="text" id="history"><a>history</a></div>
+                    <div class="access">
+                        <div class="access-item">
+                            <div class="access-item-title"></div>
+                            <div class="access-item-sub"></div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                    <div class="searchBox">
+                        <input type="text" placeholder="Search..." onkeydown='if(event.keyCode==13) window.open("/search?name="+event.target.value,target="_self");'>
+                    </div>
+                    <div class="link">
+                        <input type="hidden" value="<%= user._id %>" id="userId" />
+                        <% if (!user) { %>
+                            <div class="text"><a href="/login">login</a></div>
+                            <% } %>
+                                <% if (user) { %>
+                                    <div class="text"><a href="/user/logout">logout</a></div>
+                                    <% } %>
+                    </div>
+                    <!--temprary link just for showing the page-->
+                    <% if (user) { %>
+                        <div class="link">
+                            <div class="text"><a href="/userprofile">user</a></div>
+                        </div>
+                        <% } %>
+        </div>
+    </div>
+
+    <div class="infoContainer">
+        <div id="frame" class="imgFrame">
+            <img src="<%= info.Poster %>" alt="" />
+        </div>
+        <div class="info">
+            <h2 id="currentMovie">Movie Viewing</h2>
+            <p>Title:</p>
+            <a id="curMovieTitle">
+                <%= info.Title %>
+            </a><br />
+            <p>Release Year:</p>
+            <a id="curMovieYear">
+                <%= info.Released %>
+            </a><br />
+            <p>Rated:</p>
+            <a id="curMovieRate">
+                <%= info.Rated %>
+            </a><br />
+            <p>Runtime:</p>
+            <a id="curMovieRuntime">
+                <%= info.Runtime %>
+            </a><br />
+            <p>Plot:</p>
+            <a id="curMoviePlot">
+                <%= info.Plot %>
+            </a><br />
+        </div>
+        <div id="moreInfo">
+            <p>Genre:</p>
+            <a id="curMovieGenre">
+                <%= info.Genre %>
+            </a>
+            <p>Director:</p>
+            <a id="curMovieDir" href="/movie/related?name=<%= info.Director %>">
+                <%= info.Director %>
+            </a>
+            <p>Actor:</p>
+            <a id="curMovieAct">
+                <%= info.Actors %>
+            </a>
+            <p>Writer:</p>
+            <a id="curMovieWtr" class="expandDiv">
+                <%= info.Writer %>
+            </a>
+            <p>imdbRating:</p>
+            <a id="imdbR">
+                <%= info.imdbRating %>
+            </a>
+        </div>
+        <input type="hidden" value="<%= info._id %>" id="movieId" />
+        <div id="makeComments">
+            <textarea id="comments" class="commentArea" placeholder="Make Your Comment Here"></textarea>
+            <p><br />Make your own rate here!</p>
+            <button id="rateButton1" class="rates rate-active">1/10</button>
+            <button id="rateButton2" class="rates">2/10</button>
+            <button id="rateButton3" class="rates">3/10</button>
+            <button id="rateButton4" class="rates">4/10</button>
+            <button id="rateButton5" class="rates">5/10</button>
+            <button id="rateButton6" class="rates">6/10</button>
+            <button id="rateButton7" class="rates">7/10</button>
+            <button id="rateButton8" class="rates">8/10</button>
+            <button id="rateButton9" class="rates">9/10</button>
+            <button id="rateButton10" class="rates">10/10</button>
+            <br />
+            <button id="commentsSunmit" type="submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="review">
+        <h3>REVIEW：
+            <%= commentLen%>
+        </h3>
+        <% comment.forEach(function(item,index){ %>
+            <div class="review-item">
+                <header class="main-hd">
+                    <a href="/people?id=<%= item.user_id %>" class="avator">
+            <img width="24" height="24" src="<%= item.user_avatar %>" />
+          </a>
+                    <a href="/people?id=<%= item.user_id %>" style="margin: 0 10px" class="name">
+                        <%= item.user_name %>
+                    </a>
+                    <span style="margin-right: 10px">SCORE: <%= item.rate %></span>
+                    <span class="main-meta"><%= item.createDate %></span>
+                </header>
+                <div class="main-bd">
+                    <div id="review_12110534_short" class="review-short" data-rid="12110534">
+                        <div class="short-content">
+                            <%= item.comment %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+    <div class="recommandContainer">
+        <h1>Recommands</h1>
+        <% if (recommands.length>0) { %>
+            <%
+      recommands.forEach(function(item,index){ %>
+                <div class="inner">
+                    <a href="/movieinfo?id=<%= item ? item['_id']: '' %>">
+          <img src="<%= item ? item.Poster : '' %>" class="imgFrame" />
+        </a>
+                    <div class="text">
+                        <%= item ? item.Title: '' %>
+                    </div>
+                </div>
+                <% }); %>
+                    <% } %>
+    </div>
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/movieinfoClient.js"></script>
+    <script src="/static/js/timeago.full.min.js"></script>
+    <script src="/static/js/backgroundAnimation.js"></script>
+    <script>
+        $(function() {
+            $("#history").hover(function(event) {
+                $(".access").addClass("access-show");
+                if ($("#userId").val()) {
+                    getFocusOn();
+                }
+                event.stopPropagation();
+                return false;
+            });
+            $(".access").hover(
+                function(event) {},
+                function() {
+                    $(".access").removeClass("access-show");
+                    $(".access").empty();
+                    event.stopPropagation();
+                    return false;
+                }
+            );
+        });
+
+        function getFocusOn() {
+            $.get("/user/follow", (e) => {
+                if (e.success) {
+                    let result = [];
+                    e.msg.data.forEach((item) => {
+                        let i = `
+                 <a href="/movieinfo?id=${item.movie_id}" >
+                    <div class="access-item">
+                        <div class="access-item-title">
+                            ${item.movie_title}
+                        </div>
+                        <div class="access-item-sub">
+                            ${time(item.createDate)}
+                        </div>
+                    </div>
+                </a>
+                 `;
+                        result.push(i);
+                    });
+                    $(".access").html(result);
+                } else {
+                    $(".access").text("NO DATA FOUND");
+                }
+            });
+        }
+
+        function time(e) {
+            return timeago.format(e, "en");
+        }
+    </script>
+
+    <script>
+        $.fn.expandable = function(config) {
+            var that = $(this);
+            var isExpand = false;
+            var btnStr = 'Click to Expand';
+            var summaryCharLen = 380;
+
+            var content = that.text();
+            var summary = content.substr(0, summaryCharLen);
+
+            that.text(summary + '...');
+
+            var btn = $('<div>' + btnStr + '</div>').click(function(e) {
+                var target = $(this).prev();
+                if (isExpand) {
+                    target.text(summary + '...');
+                    $(this).text('Click to Expand');
+                } else {
+                    target.text(content);
+                    $(this).text('Click to Fold');
+                }
+                isExpand = !isExpand;
+            }).insertAfter(that).addClass('toggle-btn');
+        };
+
+        $('.expandDiv').expandable();
+    </script>
+
+</body>
+
+</html>
