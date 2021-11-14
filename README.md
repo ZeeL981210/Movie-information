@@ -2,11 +2,11 @@
 
     * Instance information
 
-Public IP:134.117.132.73
+Public IP:__________
 
-username:student
+username:______
 
-password:student
+password:________
 
     * Start supporting software and database
         * first run the mongodb database
